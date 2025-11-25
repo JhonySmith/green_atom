@@ -1,3 +1,9 @@
+import WORKS_COUNT, {
+  SUM_MAX,
+  SUM_MIN,
+  YEAR_END,
+  YEAR_START,
+} from "../../app/appConfig";
 import { getRandom } from "../utils/random";
 
 export const SUBJECTS = [
@@ -45,13 +51,17 @@ export const JOBS = [
 export const getData = () => {
   const tableData = [];
 
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < WORKS_COUNT; i++) {
     tableData.push({
       subject: getRandom(1, 5),
       jobType: getRandom(1, 4),
-      date: new Date(getRandom(2020, 2025), getRandom(0, 11), getRandom(1, 31)),
-      planSum: getRandom(1000, 4000),
-      factSum: getRandom(1000, 4000),
+      date: new Date(
+        getRandom(YEAR_START, YEAR_END),
+        getRandom(0, 11),
+        getRandom(1, 31)
+      ),
+      planSum: getRandom(SUM_MIN, SUM_MAX),
+      factSum: getRandom(SUM_MIN, SUM_MAX),
     });
   }
 
