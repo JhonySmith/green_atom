@@ -13,6 +13,8 @@ interface IProps {
 export const MainChart = (props: IProps) => {
   const { chartData, withCumulate } = props;
 
+  console.log(withCumulate);
+
   const { viewData } = useChartData({ chartData, withCumulate });
 
   const getPDF = () => {

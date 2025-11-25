@@ -2,7 +2,7 @@ import Select, { type SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import { JOBS, SUBJECTS } from "../../../../share/mocks/tableData";
-import { Slider } from "@mui/material";
+import { Checkbox, Slider } from "@mui/material";
 import type { TChartFilter } from "../../model/ChartControl.type";
 import { ControlPanelBlock } from "./ChartControlPanel.style";
 
@@ -26,6 +26,13 @@ export const ChartControlPanel = (props: IProps) => {
 
   const changeDateHandler = (_: Event, newValue: number[]) => {
     setFilter(Object.assign({ ...filter, date: newValue }));
+  };
+
+  const changeWithCumulateHandler = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    console.log(event.target.checked);
+    setFilter(Object.assign({ ...filter, withCumulate: event.target.checked }));
   };
 
   return (
@@ -74,6 +81,11 @@ export const ChartControlPanel = (props: IProps) => {
           { value: 2025, label: "2025" },
         ]}
         disableSwap
+      />
+      <InputLabel>Накопительный итог:</InputLabel>
+      <Checkbox
+        checked={filter.withCumulate}
+        onChange={changeWithCumulateHandler}
       />
     </ControlPanelBlock>
   );

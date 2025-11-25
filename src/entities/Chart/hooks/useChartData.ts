@@ -56,7 +56,7 @@ export const useChartData = (props: IProps) => {
     }
 
     setViewData(preViewData);
-  }, [chartData]);
+  }, [chartData, withCumulate]);
 
   return { viewData };
 };
