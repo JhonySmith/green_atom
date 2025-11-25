@@ -1,6 +1,7 @@
-import WORKS_COUNT, {
+import {
   SUM_MAX,
   SUM_MIN,
+  WORKS_COUNT,
   YEAR_END,
   YEAR_START,
 } from "../../app/appConfig";

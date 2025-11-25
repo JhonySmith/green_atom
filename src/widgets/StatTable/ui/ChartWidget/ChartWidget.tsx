@@ -5,12 +5,13 @@ import type { TChartFilter } from "../../../../entities/Chart/model/ChartControl
 import { useServerData } from "../../../../share/hooks/useServerData";
 import { WidgetBlock } from "./ChatWidget.style";
 import { JOBS, SUBJECTS } from "../../../../share/mocks/tableData";
+import { YEAR_END, YEAR_START } from "../../../../app/appConfig";
 
 export const ChartWidget = () => {
   const { getDataByFilter } = useServerData();
 
   const [filter, setFilter] = useState<TChartFilter>({
-    date: [2020, 2025],
+    date: [YEAR_START, YEAR_END],
     jobType: Object.values(JOBS).map((job) => job.id),
     subject: Object.values(SUBJECTS).map((subject) => subject.id),
     withCumulate: false,

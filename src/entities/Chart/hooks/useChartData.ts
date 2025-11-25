@@ -32,7 +32,6 @@ export const useChartData = (props: IProps) => {
       if (!dataDate[date]) {
         dataDate[date] = { plan: 0, fact: 0, diff: 0 };
       }
-
       dataDate[date].plan += data.planSum;
       dataDate[date].fact += data.factSum;
       dataDate[date].diff = dataDate[date].plan - dataDate[date].fact;

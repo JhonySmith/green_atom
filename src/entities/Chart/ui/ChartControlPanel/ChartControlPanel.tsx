@@ -5,6 +5,8 @@ import { JOBS, SUBJECTS } from "../../../../share/mocks/tableData";
 import { Checkbox, Slider } from "@mui/material";
 import type { TChartFilter } from "../../model/ChartControl.type";
 import { ControlPanelBlock } from "./ChartControlPanel.style";
+import { YEAR_END, YEAR_START } from "../../../../app/appConfig";
+import { getCategories } from "../../../../share/utils/chart";
 
 interface IProps {
   filter: TChartFilter;
@@ -31,7 +33,6 @@ export const ChartControlPanel = (props: IProps) => {
   const changeWithCumulateHandler = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    console.log(event.target.checked);
     setFilter(Object.assign({ ...filter, withCumulate: event.target.checked }));
   };
 
@@ -64,22 +65,17 @@ export const ChartControlPanel = (props: IProps) => {
       <Slider
         value={filter.date}
         sx={{ ...sx, marginLeft: 2 }}
-        min={2020}
-        max={2025}
+        min={YEAR_START}
+        max={YEAR_END}
         step={1}
         onChange={changeDateHandler}
         valueLabelDisplay="auto"
         getAriaValueText={(value: number) => {
           return String(value);
         }}
-        marks={[
-          { value: 2020, label: "2020" },
-          { value: 2021, label: "2021" },
-          { value: 2022, label: "2022" },
-          { value: 2023, label: "2023" },
-          { value: 2024, label: "2024" },
-          { value: 2025, label: "2025" },
-        ]}
+        marks={getCategories().map((cat) => {
+          return { value: Number(cat), label: cat };
+        })}
         disableSwap
       />
       <InputLabel>Накопительный итог:</InputLabel>

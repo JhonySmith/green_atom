@@ -4,6 +4,7 @@ import ReactApexChart from "react-apexcharts";
 import ApexCharts from "apexcharts";
 import { Button } from "@mui/material";
 import { useChartData } from "../../hooks/useChartData";
+import { getCategories } from "../../../../share/utils/chart";
 
 interface IProps {
   chartData: TChartData;
@@ -33,7 +34,7 @@ export const MainChart = (props: IProps) => {
         width={"1000"}
         options={{
           xaxis: {
-            categories: ["2020", "2021", "2022", "2023", "2024", "2025"],
+            categories: getCategories(),
           },
           chart: {
             id: "main-chart-id",
