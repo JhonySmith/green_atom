@@ -19,10 +19,7 @@ export const ChartWidget = () => {
 
   return (
     <WidgetBlock>
-      <MainChart
-        chartData={getDataByFilter(filter)}
-        withCumulate={filter.withCumulate}
-      />
+      <MainChart chartData={getDataByFilter(filter)} filter={filter} />
       <ChartControlPanel filter={filter} setFilter={setFilter} />
     </WidgetBlock>
   );

@@ -57,7 +57,7 @@ export const getData = () => {
       subject: getRandom(1, 5),
       jobType: getRandom(1, 4),
       date: new Date(
-        getRandom(YEAR_START, YEAR_END),
+        getRandom(YEAR_START, YEAR_END - 1),
         getRandom(0, 11),
         getRandom(1, 31)
       ),

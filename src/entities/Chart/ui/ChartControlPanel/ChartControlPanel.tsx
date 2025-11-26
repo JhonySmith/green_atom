@@ -26,8 +26,32 @@ export const ChartControlPanel = (props: IProps) => {
     setFilter(Object.assign({ ...filter, jobType: event.target.value }));
   };
 
-  const changeDateHandler = (_: Event, newValue: number[]) => {
-    setFilter(Object.assign({ ...filter, date: newValue }));
+  console.log(filter.date);
+
+  const changeDateHandler = (
+    _: Event,
+    newValue: number[],
+    activeThumb: number
+  ) => {
+    const minDistance = 1;
+    if (newValue[1] - newValue[0] < minDistance) {
+      if (activeThumb === 0) {
+        const clamped = Math.min(newValue[0], YEAR_END - minDistance);
+        setFilter(
+          Object.assign({
+            ...filter,
+            date: [clamped - minDistance, clamped],
+          })
+        );
+      } else {
+        const clamped = Math.max(newValue[1], minDistance);
+        setFilter(
+          Object.assign({ ...filter, date: [clamped, clamped + minDistance] })
+        );
+      }
+    } else {
+      setFilter(Object.assign({ ...filter, date: newValue }));
+    }
   };
 
   const changeWithCumulateHandler = (
@@ -73,7 +97,7 @@ export const ChartControlPanel = (props: IProps) => {
         getAriaValueText={(value: number) => {
           return String(value);
         }}
-        marks={getCategories().map((cat) => {
+        marks={getCategories(YEAR_START, YEAR_END).map((cat) => {
           return { value: Number(cat), label: cat };
         })}
         disableSwap

@@ -13,7 +13,7 @@ export const useServerData = () => {
         (filter.subject.length
           ? filter.subject.includes(data.subject)
           : true) &&
-        data.date.getFullYear() <= filter.date[1] &&
+        data.date.getFullYear() < filter.date[1] &&
         data.date.getFullYear() >= filter.date[0]
       );
     });

@@ -1,8 +1,6 @@
-import { YEAR_END, YEAR_START } from "../../app/appConfig";
-
-export const getCategories = () => {
+export const getCategories = (from: number, to: number) => {
   const categories = [];
-  for (let i = YEAR_START; i <= YEAR_END; i++) {
+  for (let i = from; i <= to; i++) {
     categories.push(i);
   }
 

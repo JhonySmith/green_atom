@@ -5,20 +5,25 @@ import ApexCharts from "apexcharts";
 import { Button } from "@mui/material";
 import { useChartData } from "../../hooks/useChartData";
 import { getCategories } from "../../../../share/utils/chart";
+import type { TChartFilter } from "../../model/ChartControl.type";
 
 interface IProps {
   chartData: TChartData;
-  withCumulate: boolean;
+  filter: TChartFilter;
 }
 
 export const MainChart = (props: IProps) => {
-  const { chartData, withCumulate } = props;
+  const { chartData, filter } = props;
 
-  const { viewData } = useChartData({ chartData, withCumulate });
+  const { viewData } = useChartData({
+    chartData,
+    withCumulate: filter.withCumulate,
+  });
 
   const getPDF = () => {
     ApexCharts.exec("main-chart-id", "dataURI").then(
       (data: { imgURI: string }) => {
+        console.log(data.imgURI);
         const pdf = new jsPDF({ orientation: "landscape" });
         pdf.addImage(data.imgURI, "PNG", 0, 0, 300, 200);
         pdf.save();
@@ -34,7 +39,7 @@ export const MainChart = (props: IProps) => {
         width={"1000"}
         options={{
           xaxis: {
-            categories: getCategories(),
+            categories: getCategories(filter.date[0], filter.date[1] - 1),
           },
           chart: {
             id: "main-chart-id",
