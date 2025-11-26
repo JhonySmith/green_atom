@@ -2,21 +2,21 @@
 
 ## Использованный стек
 
-React
-TypeScript
-Vite
-react-apexchart
-MaterialUI
-styled-components
-Архитектура FSD
+- React
+- TypeScript
+- Vite
+- react-apexchart
+- MaterialUI
+- styled-components
+- Архитектура FSD
 
 ## Для запуска
 
-npm i
-npm run dev
+- npm i
+- npm run dev
 
 ## Доп информация
 
-Данные генерируются случайным образом при каждом обновлении в файле tableData.ts
-Там же описаны "Тип работ" и "Объекты"
+Данные генерируются случайным образом при каждом обновлении в файле tableData.ts  
+Там же описаны "Тип работ" и "Объекты"  
 Количество записей, суммы за работы и прочее находится в файле appConfig.ts
