@@ -85,7 +85,7 @@ export const ChartControlPanel = (props: IProps) => {
           <MenuItem value={job.id}>{job.label}</MenuItem>
         ))}
       </Select>
-      <InputLabel>Период:</InputLabel>
+      <InputLabel>Период(до не вкл.):</InputLabel>
       <Slider
         value={filter.date}
         sx={{ ...sx, marginLeft: 2 }}
